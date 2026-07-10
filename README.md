@@ -29,3 +29,26 @@ This repository contains a simple Node.js API and a React client used for a user
 5. Open `http://localhost:3000` in your browser to use the application.
 
 The client now displays an animated banner welcoming you to **DevOps Shack**.
+
+
+
+
+
+
+CREATE USER 'cruduser'@'localhost' IDENTIFIED BY 'crudpass123';
+
+GRANT ALL PRIVILEGES ON crud_app.* TO 'cruduser'@'localhost';
+
+FLUSH PRIVILEGES;
+
+
+
+
+CREATE TABLE users (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    name VARCHAR(100) NOT NULL,
+    email VARCHAR(255) NOT NULL UNIQUE,
+    password VARCHAR(255) NOT NULL,
+    role ENUM('admin','user') DEFAULT 'user',
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
